@@ -1,27 +1,38 @@
 ﻿using ASP.Net_MVC_Fundamentals.Models;
-
+using System.Data.Entity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ASP.Net_MVC_Fundamentals.Controllers
 {
     public class MoviesController : Controller
     {
-        public IEnumerable<Movie> GetMovies()
+        private ApplicationDbContext _context;
+
+        public MoviesController()
         {
-            return new List<Movie>()
-            {
-                new Movie(){Id = 1,Name = "Shrek"},
-                new Movie(){Id = 2,Name = "Wall-e"}
-            };
-
+            _context = new ApplicationDbContext();
         }
-
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         // GET: Movie
         public ActionResult Index()
         {
-            var movies = GetMovies();
+            var movies = _context.Movies.Include(c=>c.Genre).ToList();
             return View(movies);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(c => c.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            return View(movie);
         }
         
     }

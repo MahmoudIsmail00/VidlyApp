@@ -171,10 +171,61 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212201107123_InitialModel.cs" />
+    <Compile Include="Migrations\202212201107123_InitialModel.Designer.cs">
+      <DependentUpon>202212201107123_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201119435_AddSubscriberToCustomerAndAddMembershipType.cs" />
+    <Compile Include="Migrations\202212201119435_AddSubscriberToCustomerAndAddMembershipType.Designer.cs">
+      <DependentUpon>202212201119435_AddSubscriberToCustomerAndAddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201130321_populateMembershipTypes.cs" />
+    <Compile Include="Migrations\202212201130321_populateMembershipTypes.Designer.cs">
+      <DependentUpon>202212201130321_populateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201205296_ApplyAnnotationstoCustomerName.cs" />
+    <Compile Include="Migrations\202212201205296_ApplyAnnotationstoCustomerName.Designer.cs">
+      <DependentUpon>202212201205296_ApplyAnnotationstoCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201214409_changingTypeofIsSubscribedToNewsLetter.cs" />
+    <Compile Include="Migrations\202212201214409_changingTypeofIsSubscribedToNewsLetter.Designer.cs">
+      <DependentUpon>202212201214409_changingTypeofIsSubscribedToNewsLetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201226147_AddNamePropertyToMembershipType.cs" />
+    <Compile Include="Migrations\202212201226147_AddNamePropertyToMembershipType.Designer.cs">
+      <DependentUpon>202212201226147_AddNamePropertyToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201227033_updateMembershipRecords.cs" />
+    <Compile Include="Migrations\202212201227033_updateMembershipRecords.Designer.cs">
+      <DependentUpon>202212201227033_updateMembershipRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201234040_addBirthdateToCustomer.cs" />
+    <Compile Include="Migrations\202212201234040_addBirthdateToCustomer.Designer.cs">
+      <DependentUpon>202212201234040_addBirthdateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201238577_makeBirthdateNullable.cs" />
+    <Compile Include="Migrations\202212201238577_makeBirthdateNullable.Designer.cs">
+      <DependentUpon>202212201238577_makeBirthdateNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201257490_AddGenreTableAndGenreColumns.cs" />
+    <Compile Include="Migrations\202212201257490_AddGenreTableAndGenreColumns.Designer.cs">
+      <DependentUpon>202212201257490_AddGenreTableAndGenreColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201303358_populateGenrestable.cs" />
+    <Compile Include="Migrations\202212201303358_populateGenrestable.Designer.cs">
+      <DependentUpon>202212201303358_populateGenrestable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212201310329_addDateAndQuantityPropertiesToMoviesTable.cs" />
+    <Compile Include="Migrations\202212201310329_addDateAndQuantityPropertiesToMoviesTable.Designer.cs">
+      <DependentUpon>202212201310329_addDateAndQuantityPropertiesToMoviesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -243,6 +294,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,6 +304,44 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202212201107123_InitialModel.resx">
+      <DependentUpon>202212201107123_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201119435_AddSubscriberToCustomerAndAddMembershipType.resx">
+      <DependentUpon>202212201119435_AddSubscriberToCustomerAndAddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201130321_populateMembershipTypes.resx">
+      <DependentUpon>202212201130321_populateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201205296_ApplyAnnotationstoCustomerName.resx">
+      <DependentUpon>202212201205296_ApplyAnnotationstoCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201214409_changingTypeofIsSubscribedToNewsLetter.resx">
+      <DependentUpon>202212201214409_changingTypeofIsSubscribedToNewsLetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201226147_AddNamePropertyToMembershipType.resx">
+      <DependentUpon>202212201226147_AddNamePropertyToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201227033_updateMembershipRecords.resx">
+      <DependentUpon>202212201227033_updateMembershipRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201234040_addBirthdateToCustomer.resx">
+      <DependentUpon>202212201234040_addBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201238577_makeBirthdateNullable.resx">
+      <DependentUpon>202212201238577_makeBirthdateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201257490_AddGenreTableAndGenreColumns.resx">
+      <DependentUpon>202212201257490_AddGenreTableAndGenreColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201303358_populateGenrestable.resx">
+      <DependentUpon>202212201303358_populateGenrestable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212201310329_addDateAndQuantityPropertiesToMoviesTable.resx">
+      <DependentUpon>202212201310329_addDateAndQuantityPropertiesToMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
