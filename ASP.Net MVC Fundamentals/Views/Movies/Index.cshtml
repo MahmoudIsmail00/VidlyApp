@@ -4,9 +4,18 @@
 }
 
 <h2>Movies</h2>
-<ul>
-    @foreach (var movie in @Model)
-    {
-        <li>@movie.Name</li>
-    }
-</ul>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Movies</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in @Model)
+        {
+            <tr>
+                <td>@movie.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -9,16 +9,30 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
 {
     public class CustomersController : Controller
     {
+        public IEnumerable<Customer> GetCutomers()
+        {
+            return new List<Customer>()
+            {
+                new Customer() {Id = 1, Name = "John Smith"},
+                new Customer() {Id = 2, Name = "Mary Williams"}
+            };
+
+        }
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = new List<Customer>
-            {
-                new Customer(){Id =1,  Name = "John Smith"},
-                new Customer(){Id =2, Name = "Mary Williams"}
-            };
-
+            var customers = GetCutomers();
             return View(customers);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var customer = GetCutomers().SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound();
+
+            return View(customer);
         }
     }
 }

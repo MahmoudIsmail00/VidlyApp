@@ -11,12 +11,19 @@
 }
 else
 {
-    <ul>
-        @foreach (var customer in @Model)
-        {
-            <li>@customer.Name</li>
-        }
-
-    </ul>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in @Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name,"Details","Customers",new{ id = customer.Id},null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-

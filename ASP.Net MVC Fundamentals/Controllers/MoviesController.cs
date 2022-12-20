@@ -7,16 +7,20 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movie
-
-        public ActionResult Index()
+        public IEnumerable<Movie> GetMovies()
         {
-
-            var movies = new List<Movie>
+            return new List<Movie>()
             {
                 new Movie(){Id = 1,Name = "Shrek"},
                 new Movie(){Id = 2,Name = "Wall-e"}
             };
+
+        }
+
+        // GET: Movie
+        public ActionResult Index()
+        {
+            var movies = GetMovies();
             return View(movies);
         }
         
