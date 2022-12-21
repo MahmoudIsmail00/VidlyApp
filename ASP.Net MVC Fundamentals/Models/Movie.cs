@@ -21,6 +21,7 @@ namespace ASP.Net_MVC_Fundamentals.Models
         public DateTime DateAdded { get; set; }
 
         [Required, Display(Name = "Number In Stock")]
+        [Range(1,20)]
         public int Quantity { get; set; }
     }
 }

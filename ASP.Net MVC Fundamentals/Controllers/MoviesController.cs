@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using ASP.Net_MVC_Fundamentals.ViewModels;
+using System.Data.Entity.Validation;
+using System;
 
 namespace ASP.Net_MVC_Fundamentals.Controllers
 {
@@ -26,6 +28,7 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
 
             var viewModel = new MoviesFormViewModel
             {
+                Movie = new Movie(),
                 Genres = Genres
             };
 
@@ -48,8 +51,18 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MoviesFormViewModel
+                {
+                    Movie = movie,
+                    Genres = _context.Genres.ToList()
+                };
+                return View("MovieForm", viewModel);
+            }
             if (movie.Id == 0)
                 _context.Movies.Add(movie);        
             else
@@ -62,7 +75,15 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.Quantity = movie.Quantity;
             }
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+            }
 
             return RedirectToAction("Index", "Movies");
         }

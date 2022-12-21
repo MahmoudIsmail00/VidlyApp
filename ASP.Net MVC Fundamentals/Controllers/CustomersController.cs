@@ -26,8 +26,10 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
         public ActionResult New()
         {
             var memberships = _context.MembershipTypes.ToList();
+
             var newCustomerViewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = memberships
             };
             return View("CustomerForm",newCustomerViewModel);
@@ -48,8 +50,18 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm",viewModel);
+            }
             if(customer.Id == 0)
                 _context.Customers.Add(customer);
             else
