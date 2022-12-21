@@ -219,6 +219,10 @@
     <Compile Include="Migrations\202212201310329_addDateAndQuantityPropertiesToMoviesTable.Designer.cs">
       <DependentUpon>202212201310329_addDateAndQuantityPropertiesToMoviesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212211145122_makingNameProperynotnullable.cs" />
+    <Compile Include="Migrations\202212211145122_makingNameProperynotnullable.Designer.cs">
+      <DependentUpon>202212211145122_makingNameProperynotnullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -229,6 +233,8 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\MoviesFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-mmm.css" />
@@ -295,10 +301,11 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -341,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202212201310329_addDateAndQuantityPropertiesToMoviesTable.resx">
       <DependentUpon>202212201310329_addDateAndQuantityPropertiesToMoviesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212211145122_makingNameProperynotnullable.resx">
+      <DependentUpon>202212211145122_makingNameProperynotnullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
