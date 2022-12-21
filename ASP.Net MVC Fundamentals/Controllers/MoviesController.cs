@@ -24,12 +24,10 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
 
         public ActionResult New()
         {
-            var Genres = _context.Genres.ToList();
-
             var viewModel = new MoviesFormViewModel
             {
-                Movie = new Movie(),
-                Genres = Genres
+                Genres = _context.Genres.ToList()
+
             };
 
             return View("MovieForm", viewModel);
@@ -41,9 +39,8 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MoviesFormViewModel
+            var viewModel = new MoviesFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
 
@@ -56,9 +53,8 @@ namespace ASP.Net_MVC_Fundamentals.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new MoviesFormViewModel
-                {
-                    Movie = movie,
+                var viewModel = new MoviesFormViewModel(movie)
+                {               
                     Genres = _context.Genres.ToList()
                 };
                 return View("MovieForm", viewModel);
