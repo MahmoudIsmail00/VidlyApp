@@ -22,7 +22,7 @@ namespace ASP.Net_MVC_Fundamentals
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-slate.css",
+                      "~/Content/bootstrap-cerulean.css",
                       "~/Content/Site.css"));
         }
     }
