@@ -7,18 +7,21 @@ using System.Web;
 
 namespace ASP.Net_MVC_Fundamentals.Dtos
 {
-    public class CustomerDto
+    public class MovieDto
     {
         public int Id { get; set; }
 
-        [Required, StringLength(255)]
+        [Required]
         public string Name { get; set; }
 
-        public bool IsSubscribedToNewsLetter { get; set; }
+        [Required]
+        public int GenreId { get; set; }
 
-        public byte MembershipTypeId { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
-        //[Min18YearsIfAMember]
-        public DateTime? birthdate { get; set; }
+        public DateTime DateAdded { get; set; }
+
+        [Range(1, 20)]
+        public int Quantity { get; set; }
     }
 }
