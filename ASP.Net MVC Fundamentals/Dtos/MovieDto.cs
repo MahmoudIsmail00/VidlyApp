@@ -14,6 +14,8 @@ namespace ASP.Net_MVC_Fundamentals.Dtos
         [Required]
         public string Name { get; set; }
 
+        public GenreDto Genre { get; set; }
+
         [Required]
         public int GenreId { get; set; }
 

@@ -7,6 +7,7 @@ using System.Web.Http;
 using ASP.Net_MVC_Fundamentals.Dtos;
 using ASP.Net_MVC_Fundamentals.Models;
 using AutoMapper;
+using System.Data.Entity;
 
 namespace ASP.Net_MVC_Fundamentals.Controllers.Api
 {
@@ -22,7 +23,11 @@ namespace ASP.Net_MVC_Fundamentals.Controllers.Api
         // Get api/movies
         public IHttpActionResult GetMovies()
         {
-            var movies = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var movies = _context.Movies
+                .Include(m => m.Genre)
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
+
             return Ok(movies);
         }
 

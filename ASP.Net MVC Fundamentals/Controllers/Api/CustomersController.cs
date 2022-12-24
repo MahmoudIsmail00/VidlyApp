@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace ASP.Net_MVC_Fundamentals.Controllers.Api
 {
@@ -22,7 +23,10 @@ namespace ASP.Net_MVC_Fundamentals.Controllers.Api
         // GET /api/customers
         public IHttpActionResult GetCustomers()
         {
-            var customersDtos = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customersDtos = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
 
             return Ok(customersDtos);
         }
